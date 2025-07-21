@@ -7,10 +7,14 @@
         <li><a href="#">Discord <span class="external-link-icon">↗</span></a></li>
       </ul>
     </div>
+
     <div class="right-side">
-      <button class="download-button" @click="downloadFile" :disabled="isLoading">
+<!--      <button class="download-button" @click="downloadFile" :disabled="isLoading">
         <span class="main-text">DOWNLOAD</span>
-      </button>
+      </button>-->
+      <router-link to="/downloads" class="download-button">
+        <span class="main-text">DOWNLOAD</span>
+      </router-link>
     </div>
   </nav>
 </template>

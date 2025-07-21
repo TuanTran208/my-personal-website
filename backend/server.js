@@ -10,7 +10,7 @@ app.use(cors({
   origin: 'http://localhost:8080'
 }));
 
-// This is our "secure" download route
+// This is our "secure" download router
 app.get('/api/download/:fileName', (req, res) => {
   // --- SECURITY CHECK ---
   // In a real app, you'd check a database to see if the user is logged in

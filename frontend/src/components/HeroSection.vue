@@ -7,7 +7,6 @@
 
     <div class="hero-content">
       <img alt="Game Logo" src="../assets/lineage.png" class="game-logo">
-
       <div>
         <ol>
           - Sever RetroVn mang phong cách hoài cổ quen thuộc, với giao diện đơn giản, thân thiện như nhưng đã được tối ưu hóa, giúp người chơi dễ tiếp cận ngay từ lần đầu.<br>
@@ -20,17 +19,13 @@
         </ol>
         <ol>
           - Enchant rớt ngẫu nhiên khắp bản đồ, kết hợp teleport gọn gàng và các bản đồ farm đa dạng thỏa mãn nhu cầu săn trang bị của người chơi.<br>
-
         </ol>
         <ol>
           - Người chơi có thể sử dụng hệ thống auto thông minh khi chơi party hoặc solo, đồng thời sử dụng 5 tài khoản cùng lúc trên một pc<br>
-
         </ol>
         <ol>
           - Chức năng “penalty gear” duy trì sự công bằng của trang bị; và phần thưởng hàng ngày đa dạng, phong phú giúp trải nghiệm trò chơi luôn mới mẻ
-
         </ol>
-
       </div>
     </div>
   </div>

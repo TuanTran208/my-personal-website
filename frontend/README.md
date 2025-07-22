@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Next step:
+- Deploy to Promox Server
+- Update download button follows the URL

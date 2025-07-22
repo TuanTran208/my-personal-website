@@ -15,11 +15,11 @@ app.get('/api/download/:fileName', (req, res) => {
   // --- SECURITY CHECK ---
   // In a real app, you'd check a database to see if the user is logged in
   // and has permission. Here, we'll simulate it with a simple header check.
-  const authHeader = req.headers['authorization'];
-    console.log(req.headers)
-  if (authHeader !== 'Bearer my-secret-token') {
-    return res.status(403).send('Forbidden: You do not have permission.');
-  }
+  // const authHeader = req.headers['authorization'];
+  //   console.log(req.headers)
+  // if (authHeader !== 'Bearer my-secret-token') {
+  //   return res.status(403).send('Forbidden: You do not have permission.');
+  // }
 
   const { fileName } = req.params;
   const filePath = path.join(__dirname, 'files', fileName); // Path to the file
@@ -33,7 +33,13 @@ app.get('/api/download/:fileName', (req, res) => {
     }
   });
 });
+// --- STATIC FILE SERVING ---
+// This tells Express to serve the built Vue application from the 'dist' folder.
+const frontendDistPath = path.join(__dirname, '..', 'frontend', 'dist');
+app.use(express.static(frontendDistPath));
 
 app.listen(PORT, () => {
-  console.log(`🚀 Backend server running at http://localhost:${PORT}`);
+  console.log(`🚀 Server is live!`);
+  console.log(`Your website should be accessible locally at http://localhost:${PORT}`);
+  console.log(`And publicly at http://pc-remote.duckdns.org`);
 });

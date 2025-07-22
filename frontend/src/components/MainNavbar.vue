@@ -1,9 +1,11 @@
 <template>
   <nav class="main-nav-container">
     <div class="left-side">
-      <h1 class="game-logo">LINEAGE II</h1>
+      <router-link to="/" class="game-logo">
+        <h1>LINEAGE II</h1>
+      </router-link>
       <ul class="nav-links">
-        <li><a href="#">Facebook<span class="external-link-icon">↗</span></a></li>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/profile.php?id=61578138941466">Facebook<span class="external-link-icon">↗</span></a></li>
         <li><a href="#">Discord <span class="external-link-icon">↗</span></a></li>
       </ul>
     </div>
@@ -62,6 +64,14 @@ export default {
 </script>
 
 <style scoped>
+/* MODIFIED: Changed h1 selector to a nested selector */
+.game-logo h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  color: #e0e0e0;
+  letter-spacing: 2px;
+  margin-right: 40px;
+}
 .main-nav-container {
   background-color: rgba(26, 26, 26, 0.85);
   backdrop-filter: blur(5px);

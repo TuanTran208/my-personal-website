@@ -23,6 +23,17 @@ You need to run both the backend and frontend servers at the same time. This req
         npm install
         npm run serve
    ```
-
-    - Wait for it to compile. You will see a message with a link, usually `http://localhost:8080/`.
+### For production:
+- Run the command:
+   ```Bash
+        npm install
+        npm run build
+   ```
+  - Open a Command Prompt in the `my-secure-site/backend` folder.
+    - Run the command:
+    ```Bash
+        npm install
+        node server.js
+    ```
+    - Wait for it to compile. You will see a message with a link, usually `http://pc-remote.duckdns.org`.
 3. **View Your Website**: Open your web browser and go to `http://localhost:8080`. You will see your Vue app with the download button. Click it, and your browser will securely download the file from your backend!

@@ -5,21 +5,21 @@
         <h1>Downloads</h1>
         <p>Choose the correct part.</p>
         <div class="links-wrapper">
-          <a href="http://localhost:3000/api/download/windows-installer.exe" class="download-link">
+          <a href="/api/download/updater.zip" class="download-link">
             <div class="icon-placeholder windows">U</div>
             <div class="link-text">
               <span class="main-text">Updater</span>
               <span class="sub-text">Updater.zip</span>
             </div>
           </a>
-          <a href="http://localhost:3000/api/download/mac-installer.dmg" class="download-link">
+          <a href="/api/download/system.zip" class="download-link">
             <div class="icon-placeholder mac">S</div>
             <div class="link-text">
               <span class="main-text">System</span>
               <span class="sub-text">System.zip</span>
             </div>
           </a>
-          <a href="http://localhost:3000/api/download/linux-archive.zip" class="download-link">
+          <a href="/api/download/Full_Client_Classic.zip" class="download-link">
             <div class="icon-placeholder linux">F</div>
             <div class="link-text">
               <span class="main-text">Full Client</span>

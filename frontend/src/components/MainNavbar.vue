@@ -6,7 +6,7 @@
       </router-link>
       <ul class="nav-links">
         <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/profile.php?id=61578138941466">Facebook<span class="external-link-icon">↗</span></a></li>
-        <li><a href="#">Discord <span class="external-link-icon">↗</span></a></li>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://discord.gg/62QbYvnPRm">Discord <span class="external-link-icon">↗</span></a></li>
       </ul>
     </div>
 

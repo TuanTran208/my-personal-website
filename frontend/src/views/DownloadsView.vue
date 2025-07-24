@@ -1,6 +1,5 @@
 <template>
   <div class="downloads-container">
-    <div class="hero-container">
       <div class="downloads-content">
         <h1>Downloads</h1>
         <p>Choose the correct part.</p>
@@ -28,7 +27,6 @@
           </a>
         </div>
       </div>
-    </div>
   </div>
 </template>
 
@@ -39,9 +37,7 @@ export default {
 </script>
 
 <style scoped>
-.hero-container {
-  height: 100vh; /* Full viewport height */
-  width: 100%;
+.downloads-container {
   padding-top: 125px; /* Height of both navbars */
   min-height: 100vh;
   display: flex;
@@ -54,16 +50,6 @@ export default {
   background-size: cover; /* Ensures the image covers the entire container */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
-}
-
-.downloads-container {
-  padding-top: 125px; /* Height of both navbars */
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: #1a1a1a;
-  color: #e0e0e0;
 }
 
 .downloads-content {

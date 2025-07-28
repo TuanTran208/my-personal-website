@@ -19,14 +19,17 @@ This is the main root component for your application.
     </section>
 
     <main>
-      <div v-if="filteredTools.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <component v-for="tool in filteredTools"
-          :key="tool.id"
-          :is="tool.component"
-          :tool="tool"
-          :is-favorited="favorites.includes(tool.id)"
-          @toggle-favorite="toggleFavorite"
-        />
+      <!-- MODIFICATION: Switched from grid to a centered flexbox layout for better alignment -->
+      <div v-if="filteredTools.length > 0" class="flex flex-wrap justify-center gap-6">
+        <!-- MODIFICATION: Added a wrapper with a fixed width for consistent card sizing -->
+        <div v-for="tool in filteredTools" :key="tool.id" class="w-full max-w-xs sm:w-72">
+          <component
+            :is="tool.component"
+            :tool="tool"
+            :is-favorited="favorites.includes(tool.id)"
+            @toggle-favorite="toggleFavorite"
+          />
+        </div>
       </div>
       <div v-else class="col-span-full text-center py-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
         <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300">No tools found</h3>

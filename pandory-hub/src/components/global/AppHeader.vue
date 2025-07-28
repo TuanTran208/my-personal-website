@@ -4,14 +4,14 @@ File: src/components/global/AppHeader.vue
 =================================================================
 -->
 <template>
-  <header class="flex justify-between items-center text-center mb-8">
-    <div></div>
-    <div>
+  <!-- MODIFICATION: Made header responsive to stack on mobile -->
+  <header class="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-4 mb-8">
+    <div class="text-center sm:text-left">
       <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100">Personal Hub</h1>
       <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">Your Application Control Panel</p>
     </div>
-    <div class="flex items-center">
-      <span class="text-sm text-gray-500 dark:text-gray-400 mr-2">Dark Mode</span>
+    <div class="flex items-center flex-shrink-0">
+      <span class="text-sm text-gray-500 dark:text-gray-400 mr-3">Dark Mode</span>
       <label for="dark-mode-toggle" class="cursor-pointer">
         <div class="relative">
           <input type="checkbox" id="dark-mode-toggle" class="sr-only" @change="$emit('toggleDarkMode')" :checked="isDarkModeActive">

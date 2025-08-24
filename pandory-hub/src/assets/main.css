@@ -1,0 +1,93 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+
+}
+/* src/assets/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can move these styles to a global CSS file like `src/assets/main.css` */
+body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.active-tab {
+    @apply bg-gray-700 text-white;
+}
+.dark .active-tab {
+    @apply bg-blue-500 text-white;
+}
+.inactive-tab {
+    @apply bg-gray-200 text-gray-700;
+}
+.dark .inactive-tab {
+    @apply bg-gray-700 text-gray-300;
+}
+.tool-card-base {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.tool-card-base:hover {
+    transform: translateY(-5px);
+    @apply shadow-lg;
+}
+.dark .tool-card-base:hover {
+    @apply shadow-lg shadow-gray-900/50;
+}
+.favorite-btn.favorited .star-icon {
+    @apply text-amber-500 fill-amber-500;
+}
+.utilities-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.5s ease;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.utilities-card.expanded .utilities-content {
+    max-height: 1000px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.utilities-card.expanded .chevron {
+    transform: rotate(180deg);
+}
+.chevron {
+    transition: transform 0.3s ease;
+}
+.toggle-bg:after {
+    content: '';
+    @apply absolute top-0.5 left-0.5 bg-white border border-gray-300 rounded-full h-5 w-5 transition shadow-sm;
+}
+input:checked + .toggle-bg:after {
+    transform: translateX(100%);
+    @apply border-white;
+}
+input:checked + .toggle-bg {
+    @apply bg-blue-600;
+}

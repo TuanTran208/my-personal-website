@@ -15,4 +15,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  vite:{
+    server: {
+      hmr: {
+	  host:'pandory.duckdns.org',
+	  protocal: 'ws',
+      },
+      allowedHosts:[
+	'pandory.duckdns.org'
+      ]
+    }
+  }
 })

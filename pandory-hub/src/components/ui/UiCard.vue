@@ -15,6 +15,7 @@ File: src/components/ui/UiCard.vue
       </div>
       <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">{{ tool.title }}</h3>
       <p class="text-gray-600 dark:text-gray-400 flex-grow">{{ tool.description }}</p>
+      <slot></slot>
       <slot name="footer"></slot>
     </div>
     <slot name="expanded-content"></slot>

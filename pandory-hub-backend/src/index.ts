@@ -53,9 +53,30 @@ app.get('/api/stock/:symbol', async (req: Request, res: Response) => {
 // Route to get VNIndex history
 app.get('/api/vnindex', (req: Request, res: Response) => {
   const history = getHistory();
-  // Sort by timestamp descending so latest is first (optional, but good for UI)
-  // actually UI might prefer ascending. Let's send raw array.
   res.json(history);
+});
+
+// Route to get Detailed Stock Info (Graham Metrics)
+import { getStockDetails, getStockHistory } from './services/stockDetailService';
+app.get('/api/stock-details/:symbol', async (req: Request, res: Response) => {
+  const { symbol } = req.params;
+  try {
+    const details = await getStockDetails(symbol);
+    res.json(details);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch stock details' });
+  }
+});
+
+// Route to get Stock History (Chart)
+app.get('/api/stock-history/:symbol', async (req: Request, res: Response) => {
+  const { symbol } = req.params;
+  try {
+    const history = await getStockHistory(symbol);
+    res.json(history);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch stock history' });
+  }
 });
 
 // Route to manually test Discord Alert

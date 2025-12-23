@@ -18,7 +18,8 @@ export const fetchVNIndex = async (): Promise<VNIndexData | null> => {
     try {
         const end = Math.floor(Date.now() / 1000);
         const start = end - 86400; // Look back 24 hours to ensure we get data
-        const url = `https://dchart-api.vndirect.com.vn/dchart/history?symbol=VNINDEX&resolution=60&from=${start}&to=${end}`;
+        // Changed resolution from 60 (1 hour) to 1 (1 minute) per user request for faster updates
+        const url = `https://dchart-api.vndirect.com.vn/dchart/history?symbol=VNINDEX&resolution=1&from=${start}&to=${end}`;
 
         console.log(`Fetching VNIndex data from: ${url}`);
         const response = await fetch(url);

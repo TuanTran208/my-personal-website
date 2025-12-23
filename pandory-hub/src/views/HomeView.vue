@@ -38,6 +38,7 @@ import ChatAiCard from '../components/tools/ChatAi/ChatAiCard.vue';
 import AiAgentCard from '../components/tools/AiAgent/AiAgentCard.vue';
 import UtilitiesCard from '../components/tools/Utilities/UtilitiesCard.vue';
 import CourseManagerCard from '../components/tools/CourseManager/CourseManagerCard.vue';
+import HomeAssistantCard from '../components/tools/HomeAssistant/HomeAssistantCard.vue';
 
 const toolComponents = {
   'stock-card': StockCard,
@@ -46,6 +47,7 @@ const toolComponents = {
   'ai-agent-card': AiAgentCard,
   'utilities-card': UtilitiesCard,
   'course-manager-card': CourseManagerCard,
+  'home-assistant-card': HomeAssistantCard,
 };
 
 const tools = ref([
@@ -55,17 +57,29 @@ const tools = ref([
   { id: 'ai-agent', title: 'AI Agent', description: 'Automate tasks with a personal agent.', category: 'AI & Productivity', icon: '🧠', component: toolComponents['ai-agent-card'] },
   { id: 'utilities', title: 'Utilities', description: 'A collection of useful daily tools.', category: 'Utilities', icon: '⚙️', component: toolComponents['utilities-card'] },
   { id: 'course-manager', title: 'Course Manager', description: 'Organize your course materials.', category: 'Content & Media', icon: '📚', component: toolComponents['course-manager-card'] },
+  { id: 'home-assistant', title: 'Home Assistant', description: 'Control your smart home devices.', category: 'Smart Home', icon: '🏠', component: toolComponents['home-assistant-card'] },
 ]);
 
-const categories = ref(['All', 'Favorites', 'AI & Productivity', 'Finance', 'Utilities', 'Content & Media']);
+const categories = ref(['All', 'Favorites', 'AI & Productivity', 'Finance', 'Utilities', 'Content & Media', 'Smart Home']);
 const activeCategory = ref('All');
 const favorites = ref(JSON.parse(localStorage.getItem('hubFavoritesVue')) || []);
 
-const filteredTools = computed(() => tools.value.filter(tool => {
-  if (activeCategory.value === 'All') return true;
-  if (activeCategory.value === 'Favorites') return favorites.value.includes(tool.id);
-  return tool.category === activeCategory.value;
-}));
+const filteredTools = computed(() => {
+  const list = tools.value.filter(tool => {
+    if (activeCategory.value === 'All') return true;
+    if (activeCategory.value === 'Favorites') return favorites.value.includes(tool.id);
+    return tool.category === activeCategory.value;
+  });
+
+  // Sort: Favorites first, then alphabetical (or original order)
+  return list.sort((a, b) => {
+    const aFav = favorites.value.includes(a.id);
+    const bFav = favorites.value.includes(b.id);
+    if (aFav && !bFav) return -1;
+    if (!aFav && bFav) return 1;
+    return 0;
+  });
+});
 
 const saveFavorites = () => localStorage.setItem('hubFavoritesVue', JSON.stringify(favorites.value));
 

@@ -3,6 +3,12 @@
     <!-- Header / Navigation -->
     <header class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
       <div>
+        <router-link to="/" class="inline-flex items-center text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 mb-2 transition-colors">
+            <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Hub
+        </router-link>
         <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-1">
           <span class="text-blue-600 dark:text-blue-400">Graham</span> & Buffett Tracker
         </h1>

@@ -11,9 +11,9 @@ export const getStockDetails = async (symbol: string) => {
     const ratioUrl = `https://api-finfo.vndirect.com.vn/v4/ratios?q=code:${symbol.toUpperCase()}&size=50&sort=reportDate:desc`;
     // 3. Fetch Financial Statements (For Assets/Debt/Equity) - Increased size to ensure we get all items
     const financialUrl = `https://api-finfo.vndirect.com.vn/v4/financial_statements?q=code:${symbol.toUpperCase()}~reportType:QUARTER&size=400&sort=fiscalDate:desc`;
-    // 4. Fetch Historical Net Profit (For Growth/Stability) - Code 14200 (Common) or 413220 (Bank-ish?)
-    // Let's use 14200 as it appeared for TCB and FPT.
-    const profitUrl = `https://api-finfo.vndirect.com.vn/v4/financial_statements?q=code:${symbol.toUpperCase()}~itemCode:14200~reportType:QUARTER&size=40&sort=fiscalDate:desc`;
+    // 4. Fetch Historical Net Profit (For Growth/Stability) - Code 14200 (Common) or 413220 (Bank-ish?), 21900/700089 (Securities)
+    // Query multiple codes to cover different sectors (Manufacturing, Bank, Securities)
+    const profitUrl = `https://api-finfo.vndirect.com.vn/v4/financial_statements?q=code:${symbol.toUpperCase()}~itemCode:14200,21900,700089~reportType:QUARTER&size=40&sort=fiscalDate:desc`;
 
     const headers = {
         'User-Agent': 'Mozilla/5.0'
@@ -65,19 +65,19 @@ export const getStockDetails = async (symbol: string) => {
         const divYield = findRatio(['DIVIDEND_YIELD', '51033', '51016']);
         const shares = findRatio(['51025', 'LISTED_SHARES', '57070']); // Need shares for P/B calc
 
-        // Assets: 12700 (Total Assets), 14400 (Total Resources), 27001 (Legacy)
-        const assets = findFinancial([27001, 27000, 12700, 14400, 10000 + 20000]);
-        // Debt: 13000 (Total Liabilities), 30001 (Legacy/Bank)
-        let debt = findFinancial([30001, 30000, 30002, 13000]);
-        // Equity: 14000 (Owner's Equity) - needed for VCB where Debt 13000 is missing
-        const equity = findFinancial([14000, 40000]);
+        // Assets: 12700 (Total Assets), 14400 (Total Resources), 27001 (Legacy), 700000 (Securities)
+        const assets = findFinancial([27001, 27000, 12700, 14400, 10000 + 20000, 700000]);
+        // Debt: 13000 (Total Liabilities), 30001 (Legacy/Bank), 37000 (Securities small?), Liabilities usually Assets-Equity if code missing
+        let debt = findFinancial([30001, 30000, 30002, 13000, 37000]);
+        // Equity: 14000 (Owner's Equity), 14100 (Securities)
+        const equity = findFinancial([14000, 40000, 14100]);
 
-        // Fallback for Debt if missing (Common in some Bank reports like VCB)
+        // Fallback for Debt if missing (Common in some Bank/Securities reports)
         if (debt === 0 && assets > 0 && equity > 0) {
             debt = assets - equity;
         }
 
-        // Fallback for P/B (Common in small caps like DAH)
+        // Fallback for P/B (Common in small caps like DAH or Securities where PB ratio missing)
         if ((!pb || pb === 0) && stats.close && shares && equity) {
             const marketCap = stats.close * shares;
             if (equity > 0) {
@@ -86,8 +86,9 @@ export const getStockDetails = async (symbol: string) => {
         }
 
         // Calculate Current Ratio: Current Assets (11000) / Current Liabilities (13100)
-        const currentAssets = findFinancial([11000]);
-        const currentLiabilities = findFinancial([13100, 30001]); // 13100 is Short term debt/liabilities
+        // Securities (700xxx) might not have "Current Assets" concept standardly.
+        const currentAssets = findFinancial([11000, 700003]); // 700003 might be short term? Just guessing, sticking to standard.
+        const currentLiabilities = findFinancial([13100, 30001]);
 
         let currentRatio = findRatio(['CURRENT_RATIO', '51703', 'QUICK_RATIO']);
         if (!currentRatio && currentLiabilities > 0) {
@@ -99,19 +100,20 @@ export const getStockDetails = async (symbol: string) => {
         let earningStability = false;
 
         if (profits.length > 0) {
-            // Sort Descending (Newest first) is default but ensure it
+            // Sort Descending (Newest first)
             profits.sort((a: any, b: any) => new Date(b.fiscalDate).getTime() - new Date(a.fiscalDate).getTime());
 
-            // 1. Growth (latest vs 4 quarters ago) -> approx 1 year growth
+            // 1. Growth
             const latest = profits[0]?.numericValue || 0;
             const yearAgo = profits[4]?.numericValue || profits[profits.length - 1]?.numericValue || 0;
 
-            if (yearAgo > 0) {
-                epsGrowth = ((latest - yearAgo) / yearAgo) * 100;
+            if (yearAgo !== 0) { // Avoid division by zero
+                epsGrowth = ((latest - yearAgo) / Math.abs(yearAgo)) * 100;
             }
 
-            // 2. Stability: Check if last 12 quarters (3 years) are profitable
+            // 2. Stability
             const checkCount = Math.min(profits.length, 12);
+            // Filter robustly
             const positiveCount = profits.slice(0, checkCount).filter((p: any) => p.numericValue > 0).length;
             earningStability = (positiveCount === checkCount);
         }

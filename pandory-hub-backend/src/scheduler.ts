@@ -4,7 +4,7 @@ import { fetchVNIndex } from './services/vnindexService';
 const INTERVAL_MS = 60 * 1000; // 1 minute
 
 export const startScheduler = () => {
-    console.log('Starting VNIndex Scheduler (every 1 hour)...');
+    console.log('Starting VNIndex Scheduler (every 1 minute)...');
 
     // Run immediately on start
     fetchVNIndex();

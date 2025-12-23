@@ -177,7 +177,8 @@ const formatNumber = (num) => {
 const formatTime = (timestamp) => {
     if (!timestamp) return '';
     const date = new Date(timestamp * 1000); 
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return date.toLocaleDateString([], { month: '2-digit', day: '2-digit' }) + ' ' + 
+           date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
 // Fetch data

@@ -110,7 +110,7 @@ const convertPdf = async () => {
     formData.append('format', format.value);
 
     try {
-        const response = await fetch('http://localhost:3001/api/utilities/pdf-to-docx', {
+        const response = await fetch('/api/utilities/pdf-to-docx', {
             method: 'POST',
             body: formData,
             headers: {

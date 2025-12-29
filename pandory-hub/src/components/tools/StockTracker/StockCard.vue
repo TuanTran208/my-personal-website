@@ -188,8 +188,8 @@ const fetchData = async () => {
     
     // Parallel fetch: VNIndex History + BTC Details
     const [vnRes, btcRes] = await Promise.all([
-        fetch('http://localhost:3001/api/vnindex'),
-        fetch('http://localhost:3001/api/stock-details/BTC')
+        fetch('/api/vnindex'),
+        fetch('/api/stock-details/BTC')
     ]);
 
     if (!vnRes.ok) throw new Error('Failed to load VNIndex');

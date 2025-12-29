@@ -423,8 +423,8 @@ const fetchStockData = async (symbol) => {
     try {
         // Parallel Fetch: Details + History
         const [detailRes, histRes] = await Promise.all([
-            fetch(`http://localhost:3001/api/stock-details/${symbol}`),
-            fetch(`http://localhost:3001/api/stock-history/${symbol}`)
+            fetch(`/api/stock-details/${symbol}`),
+            fetch(`/api/stock-history/${symbol}`)
         ]);
 
         if (!detailRes.ok) throw new Error('Stock not found');

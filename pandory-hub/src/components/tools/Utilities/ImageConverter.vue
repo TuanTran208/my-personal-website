@@ -74,7 +74,7 @@ const convert = async () => {
     const key = localStorage.getItem('pandory_access_key');
 
     try {
-        const response = await fetch('http://localhost:3001/api/utilities/convert-image', {
+        const response = await fetch('/api/utilities/convert-image', {
             method: 'POST',
             headers: {
                 'x-access-key': key || ''

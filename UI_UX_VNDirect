@@ -1,0 +1,23 @@
+Key Note: UI/UX Principles for the VnIndext Stock Support Tracker
+A user interface (UI) design for a financial support tracker and stock platform, such as VnIndext, must prioritize clarity, risk mitigation, and accessibility to support rational decision-making and minimize cognitive load. The following principles should govern the design across layout, spacing, and content.
+I. Usability and Risk Mitigation
+The core design objective is to minimize cognitive load (the brain power required to use an interface) and interaction cost (the mental and physical effort). In a financial context, the UI must actively discourage emotional reactions and speculation.
+• Prioritize Logic Over Emotion: Base design decisions on logic and evidence, simplifying any element that is vague, confusing, or unclear, rather than relying on subjective opinions or fleeting artistic trends. The design should provide the intellectual framework needed for sound decision-making, rather than encouraging action based on market excitement or fear.
+• Discourage Speculation: Avoid promoting features or data presentation methods that encourage short-term trading or "jumping in" based on price fluctuations, as speculation is characterized by betting on market movement rather than assessing fundamental value.
+• Consistency and Predictability: Use common design patterns and maintain consistency in how similar elements look and function within the product, thereby leveraging users’ existing mental models, fostering predictability, and reducing errors.
+II. Layout and Data Presentation
+Layout and spacing must ensure that complex financial data is highly legible, scannable, and organized logically.
+• Establish Clear Visual Hierarchy: Create a clear order of importance (visual hierarchy) so users can quickly scan information and focus on essential data (e.g., value vs. current price, tracking alerts). Achieve this using variations in size, color, contrast, and prominence.
+• Group Related Elements (Proximity): Structure and organize data by placing closely related elements near each other (proximity). For complex tools or reporting, utilize containers (borders, backgrounds) to visibly group content and create separation.
+• Alignment for Readability: Left align body text (such as long descriptions or report narratives) for optimal readability, as this gives the eyes a consistent anchor. Avoid combining multiple alignments (left, right, center) within small components, as this increases cognitive load.
+• Use Numerals for Data: Employ numerals for numbers (e.g., 2,420, not "two thousand four hundred and twenty"), as numerals are easier and faster for users to scan and comprehend, especially in tables and tickers.
+• Be Generous with White Space: Use ample white space (empty space) between modules and content groups to reduce visual clutter and improve overall clarity, particularly when dealing with dense numerical figures or tracking timelines.
+III. Content, Interaction, and Accessibility
+Content design must focus on conciseness and absolute accessibility to ensure all users can understand the information and interact efficiently with the tracker.
+• WCAG AA Compliance: Ensure the interface meets Web Content Accessibility Guidelines (WCAG) 2.1 level AA requirements at a minimum. This is critical for users with low vision or color blindness.
+    ◦ Contrast: Small text (18pt or less) must meet a 4.5:1 contrast ratio, while interface elements and large text (above 18pt bold) need a 3:1 ratio.
+    ◦ Color Independence: Never rely on color alone to convey meaning (e.g., using only red/green to indicate stock movement status). Use additional cues like icons, borders, or text links (underlined).
+• Concise and Plain Language: Aim to be concise, using fewer words to communicate information clearly and quickly. Use plain and simple language, avoiding jargon, technical terms, or slang to ensure the widest audience understands the message.
+• Front-Load and Structure: Use descriptive headings and bullets to break up long reports or analyses. Front-load text by placing the most important information at the start of links or headings to aid rapid scanning.
+• Actionable Elements (Fitts's Law): Ensure all interactive elements (buttons, tracker controls) have a sufficient target size (at least 48pt by 48pt) and are separated by adequate space (at least 8pt) to minimize interaction cost and accommodate users with motor impairment.
+• Descriptive Button Text: Button text should clearly describe the action being taken (e.g., "Explore templates," not "Click here" or "Learn more").

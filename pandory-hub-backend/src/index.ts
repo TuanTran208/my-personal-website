@@ -81,14 +81,97 @@ app.get('/api/stock-history/:symbol', async (req: Request, res: Response) => {
 
 // Route to manually test Discord Alert
 // Route to manually test Discord Alert
-app.get('/api/test-alert', async (req: Request, res: Response) => {
-  // Simulate a real warning message
-  const threshold = process.env.VNINDEX_ALERT_THRESHOLD || '1700';
-  const fakePrice = 1195.50;
-  const msg = `📉 **VNINDEX ALERT**: The index has dropped to **${fakePrice}**, which is below your threshold of ${threshold}.`;
+// --- Utilities Routes ---
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
+import { mediaService } from './services/mediaService';
+import { authMiddleware } from './middleware/authMiddleware';
 
-  await sendDiscordAlert(msg, true);
-  res.send("Alert sent! Check your Discord channel for the simulated warning.");
+// Configure Multer
+const upload = multer({ dest: path.join(__dirname, '../uploads/') });
+
+// Apply Security to all utility routes
+app.use('/api/utilities', authMiddleware);
+
+// 1. Compress Video
+app.post('/api/utilities/compress-video', upload.single('file'), async (req: Request, res: Response) => {
+  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  const quality = req.body.quality || 'Medium';
+  const format = req.body.format || 'mp4';
+
+  try {
+    const outputPath = await mediaService.compressVideo(req.file.path, quality, format);
+    res.download(outputPath, (err) => {
+      mediaService.cleanup(req.file!.path); // Clean upload
+      mediaService.cleanup(outputPath);     // Clean output
+    });
+  } catch (error) {
+    console.error('Compression error:', error);
+    mediaService.cleanup(req.file!.path);   // Clean upload on error
+    res.status(500).json({ error: 'Compression failed' });
+  }
+});
+
+// 2. Download Video
+app.post('/api/utilities/download-video', async (req: Request, res: Response) => {
+  const { url } = req.body;
+  if (!url) return res.status(400).json({ error: 'No URL provided' });
+
+  try {
+    const result = await mediaService.downloadVideo(url);
+    res.download(result.path, `${result.title}.mp4`, (err) => {
+      mediaService.cleanup(result.path); // Clean output
+    });
+  } catch (error) {
+    console.error('Download error:', error);
+    res.status(500).json({ error: 'Download failed' });
+  }
+});
+
+// 3. Convert Image
+app.post('/api/utilities/convert-image', upload.single('file'), async (req: Request, res: Response) => {
+  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  const format = req.body.format || 'png';
+
+  try {
+    const outputPath = await mediaService.convertImage(req.file.path, format);
+    res.download(outputPath, (err) => {
+      mediaService.cleanup(req.file!.path);
+      mediaService.cleanup(outputPath);     // Clean output
+    });
+  } catch (error) {
+    console.error('Conversion error:', error);
+    mediaService.cleanup(req.file!.path);   // Clean upload on error
+    res.status(500).json({ error: 'Conversion failed' });
+  }
+});
+
+// 4. PDF to Markdown/DOCX
+app.post('/api/utilities/pdf-to-docx', upload.single('file'), async (req: Request, res: Response) => {
+  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  const format = req.body.format || 'markdown'; // 'markdown' or 'docx'
+
+  try {
+    const outputPath = await mediaService.convertPdf(req.file.path, format);
+    res.download(outputPath, (err) => {
+      mediaService.cleanup(req.file!.path);
+      mediaService.cleanup(outputPath);     // Clean output
+    });
+  } catch (error: any) {
+    console.error('PDF Conversion error:', error);
+    mediaService.cleanup(req.file!.path);   // Clean upload on error
+    res.status(500).json({ error: 'Conversion failed' });
+  }
+});
+
+// --- Static Frontend Serving (MUST BE LAST) ---
+const publicPath = path.join(__dirname, '../public');
+app.use(express.static(publicPath));
+
+// Handle SPA routing: any request not handled by API or static files returns index.html
+app.get('*', (req: Request, res: Response) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 // --- Start Server ---

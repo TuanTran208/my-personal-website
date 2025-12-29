@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import StockDashboard from '../views/StockDashboard.vue';
+import UtilitiesDashboard from '../views/UtilitiesDashboard.vue';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
             path: '/stock-dashboard',
             name: 'stock-dashboard',
             component: StockDashboard
+        },
+        {
+            path: '/utilities-dashboard',
+            name: 'utilities-dashboard',
+            component: UtilitiesDashboard
         }
     ]
 });

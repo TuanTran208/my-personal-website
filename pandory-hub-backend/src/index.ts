@@ -104,10 +104,11 @@ app.post('/api/utilities/compress-video', upload.single('file'), async (req: Req
     const outputPath = await mediaService.compressVideo(req.file.path, quality, format);
     res.download(outputPath, (err) => {
       mediaService.cleanup(req.file!.path); // Clean upload
-      // mediaService.cleanup(outputPath); // Keep for a bit or cron job cleans it? For now leave it.
+      mediaService.cleanup(outputPath);     // Clean output
     });
   } catch (error) {
     console.error('Compression error:', error);
+    mediaService.cleanup(req.file!.path);   // Clean upload on error
     res.status(500).json({ error: 'Compression failed' });
   }
 });
@@ -119,7 +120,9 @@ app.post('/api/utilities/download-video', async (req: Request, res: Response) =>
 
   try {
     const result = await mediaService.downloadVideo(url);
-    res.download(result.path, `${result.title}.mp4`);
+    res.download(result.path, `${result.title}.mp4`, (err) => {
+      mediaService.cleanup(result.path); // Clean output
+    });
   } catch (error) {
     console.error('Download error:', error);
     res.status(500).json({ error: 'Download failed' });
@@ -135,14 +138,15 @@ app.post('/api/utilities/convert-image', upload.single('file'), async (req: Requ
     const outputPath = await mediaService.convertImage(req.file.path, format);
     res.download(outputPath, (err) => {
       mediaService.cleanup(req.file!.path);
+      mediaService.cleanup(outputPath);     // Clean output
     });
   } catch (error) {
     console.error('Conversion error:', error);
+    mediaService.cleanup(req.file!.path);   // Clean upload on error
     res.status(500).json({ error: 'Conversion failed' });
   }
 });
 
-// 4. PDF to DOCX (Placeholder)
 // 4. PDF to Markdown/DOCX
 app.post('/api/utilities/pdf-to-docx', upload.single('file'), async (req: Request, res: Response) => {
   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
@@ -152,9 +156,11 @@ app.post('/api/utilities/pdf-to-docx', upload.single('file'), async (req: Reques
     const outputPath = await mediaService.convertPdf(req.file.path, format);
     res.download(outputPath, (err) => {
       mediaService.cleanup(req.file!.path);
+      mediaService.cleanup(outputPath);     // Clean output
     });
   } catch (error: any) {
     console.error('PDF Conversion error:', error);
+    mediaService.cleanup(req.file!.path);   // Clean upload on error
     res.status(500).json({ error: 'Conversion failed' });
   }
 });

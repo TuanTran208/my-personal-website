@@ -88,7 +88,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const file = ref(null);
 const fileInput = ref(null);
@@ -104,25 +104,34 @@ const handleFileSelect = (e) => {
     }
 };
 
-const compress = async () => {
-    if (!file.value) return;
-    isProcessing.value = true;
-    
-    const formData = new FormData();
-    formData.append('file', file.value);
-    formData.append('quality', quality.value);
-    formData.append('format', format.value);
-    
-    const key = localStorage.getItem('pandory_access_key');
+    const accessKey = ref('');
 
-    try {
-        const response = await fetch('http://localhost:3001/api/utilities/compress-video', {
-            method: 'POST',
-            headers: {
-                'x-access-key': key || ''
-            },
-            body: formData
-        });
+    onMounted(() => {
+        accessKey.value = localStorage.getItem('pandory_access_key') || '';
+    });
+
+    const compress = async () => {
+        if (!file.value) return;
+        if (!accessKey.value) {
+            alert('Please set Access Key in Dashboard Settings');
+            return;
+        }
+
+        isProcessing.value = true;
+        
+        const formData = new FormData();
+        formData.append('file', file.value);
+        formData.append('quality', quality.value);
+        formData.append('format', format.value);
+        
+        try {
+            const response = await fetch('http://localhost:3001/api/utilities/compress-video', {
+                method: 'POST',
+                headers: {
+                    'x-access-key': accessKey.value
+                },
+                body: formData
+            });
 
         if (response.status === 401) throw new Error('Unauthorized. Please set Access Key in Settings.');
         if (!response.ok) throw new Error('Compression failed');

@@ -165,6 +165,15 @@ app.post('/api/utilities/pdf-to-docx', upload.single('file'), async (req: Reques
   }
 });
 
+// --- Static Frontend Serving (MUST BE LAST) ---
+const publicPath = path.join(__dirname, '../public');
+app.use(express.static(publicPath));
+
+// Handle SPA routing: any request not handled by API or static files returns index.html
+app.get('*', (req: Request, res: Response) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
+
 // --- Start Server ---
 app.listen(PORT, () => {
   console.log(`TypeScript backend server running on http://localhost:${PORT}`);

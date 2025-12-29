@@ -8,6 +8,8 @@ This guide explains how to deploy the **Pandory Hub** (frontend + backend) as a 
 -   **npm**
 -   **ffmpeg** (for video processing, creating thumbnails)
     -   `sudo apt update && sudo apt install ffmpeg`
+-   **Python** (Required by `yt-dlp` and build tools)
+    -   `sudo apt install python3 python-is-python3`
 
 ## 1. Local Preparation (Windows)
 

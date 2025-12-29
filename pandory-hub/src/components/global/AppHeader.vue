@@ -8,7 +8,7 @@ File: src/components/global/AppHeader.vue
   <header class="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-4 mb-8">
     <div class="text-center sm:text-left">
       <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100">Personal Hub</h1>
-      <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">Your Application Control Panel</p>
+      <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">My Pandory Control Hub</p>
     </div>
     <div class="flex items-center flex-shrink-0">
       <span class="text-sm text-gray-500 dark:text-gray-400 mr-3">Dark Mode</span>

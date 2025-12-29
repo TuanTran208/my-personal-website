@@ -10,9 +10,9 @@
             Back to Hub
         </router-link>
         <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-1 flex items-center gap-2">
-           <span class="text-blue-600 dark:text-blue-400">Utilities</span> Workbench
+           <span class="text-blue-600 dark:text-blue-400">Pandory</span> Utilities
         </h1>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Essential tools for your daily workflow.</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Essential tools for my daily operations.</p>
       </div>
 
       <!-- Access Key Controls -->
@@ -31,7 +31,7 @@
     <div v-if="showSettings" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-sm w-full p-6">
             <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Dashboard Security</h3>
-            <p class="text-sm text-gray-500 mb-4">Enter your API Access Key to unlock utility functions.</p>
+            <p class="text-sm text-gray-500 mb-4">Enter Pandory Access Key to unlock utility functions.</p>
             
             <input 
                 v-model="inputKey" 

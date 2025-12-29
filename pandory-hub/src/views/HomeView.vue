@@ -3,23 +3,24 @@
     <section id="navigation-section" class="mb-8">
       <div class="p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
         <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Tool Categories</h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">
-          Welcome to your central hub. Use the tabs below to filter the tools based on their category. You can mark your most-used tools with a star to have them appear in the "Favorites" tab for quick access.
-        </p>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          Welcome to <span class="font-bold text-orange-500">Pandory Hub</span>. This is my personal command center. 
+          Use the tabs below to filter tools, or mark favorites to keep my most-used apps ready.
+      </p>
         <CategoryTabs :categories="categories" :active-category="activeCategory" @update:active-category="activeCategory = $event" />
-      </div>
+    </div>
     </section>
 
     <main>
       <div v-if="filteredTools.length > 0" class="flex flex-wrap justify-center gap-6">
         <div v-for="tool in filteredTools" :key="tool.id" class="w-full max-w-xs sm:w-72">
-          <component
-            :is="tool.component"
+       <component 
+          :is="tool.component"
             :tool="tool"
             :is-favorited="favorites.includes(tool.id)"
-            @toggle-favorite="toggleFavorite"
-          />
-        </div>
+          @toggle-favorite="toggleFavorite"
+       />
+    </div>
       </div>
       <div v-else class="col-span-full text-center py-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
         <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300">No tools found</h3>
@@ -40,6 +41,7 @@ import UtilitiesCard from '../components/tools/Utilities/UtilitiesCard.vue';
 import CourseManagerCard from '../components/tools/CourseManager/CourseManagerCard.vue';
 import HomeAssistantCard from '../components/tools/HomeAssistant/HomeAssistantCard.vue';
 
+// Async Components (Lazy Loading) - NO, Static now for debugging
 const toolComponents = {
   'stock-card': StockCard,
   'nas-card': NasCard,

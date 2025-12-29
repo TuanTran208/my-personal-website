@@ -71,7 +71,7 @@ const download = async () => {
     try {
         const key = localStorage.getItem('pandory_access_key');
         
-        const response = await fetch('http://localhost:3001/api/utilities/download-video', {
+        const response = await fetch('/api/utilities/download-video', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',

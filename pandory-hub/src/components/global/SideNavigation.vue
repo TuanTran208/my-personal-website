@@ -18,9 +18,7 @@
     <!-- Brand -->
     <div class="h-16 flex items-center px-6 border-b border-gray-100 dark:border-gray-700/50 overflow-hidden whitespace-nowrap">
         <div class="flex items-center gap-3 text-blue-600 dark:text-blue-400 transition-all duration-300">
-            <svg class="w-8 h-8 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
+            <img src="/favicon_bg_rm.png" alt="Pandory Hub Logo" class="w-8 h-8 flex-shrink-0" />
             <span 
                 class="text-xl font-bold tracking-tight transition-opacity duration-300"
                 :class="[isCollapsed ? 'opacity-0 w-0' : 'opacity-100']"
@@ -80,6 +78,38 @@
                 Market Tracker
             </div>
         </router-link>
+
+        <div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider transition-opacity duration-300 whitespace-nowrap overflow-hidden"
+             :class="[isCollapsed ? 'opacity-0 h-0 p-0' : 'opacity-100']"
+        >
+            Services
+        </div>
+
+        <!-- Home Assistant -->
+        <a href="http://home.pandory.duckdns.org" target="_blank"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors whitespace-nowrap group relative"
+        >
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            <span :class="[isCollapsed ? 'hidden' : 'block']">Home Assistant</span>
+             <div v-if="isCollapsed" class="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity z-50 pointer-events-none whitespace-nowrap">
+                Home Assistant
+            </div>
+        </a>
+
+        <!-- NasServer -->
+        <a href="http://nas.pandory.duckdns.org" target="_blank"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors whitespace-nowrap group relative"
+        >
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+            </svg>
+            <span :class="[isCollapsed ? 'hidden' : 'block']">NAS Server</span>
+             <div v-if="isCollapsed" class="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity z-50 pointer-events-none whitespace-nowrap">
+                NAS Server
+            </div>
+        </a>
     </nav>
 
     <!-- Footer / Settings -->

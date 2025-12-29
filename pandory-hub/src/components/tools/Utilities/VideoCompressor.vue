@@ -125,7 +125,7 @@ const handleFileSelect = (e) => {
         formData.append('format', format.value);
         
         try {
-            const response = await fetch('http://localhost:3001/api/utilities/compress-video', {
+            const response = await fetch('/api/utilities/compress-video', {
                 method: 'POST',
                 headers: {
                     'x-access-key': accessKey.value

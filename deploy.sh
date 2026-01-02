@@ -44,12 +44,7 @@ if [ $? -ne 0 ]; then
 fi
 echo "✅ Backend built successfully."
 
-# 4. Final Instructions
-echo "------------------------------------------------"
-echo "🎉 Deployment Preparation Complete!"
-echo "------------------------------------------------"
-echo "To run the server on Linux:"
-echo "1. Navigate to: $BACKEND_DIR"
-echo "2. Run: npm start"
-echo "   (Ensure process.env.PORT is set, default 3001)"
-echo "------------------------------------------------"
+# 4. Run Server
+echo "🚀 Starting Backend Server..."
+cd "$BACKEND_DIR" || exit
+npm start

@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 font-inter p-6">
     <!-- Header / Navigation -->
-    <header class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+    <header class="flex flex-col md:flex-row justify-between items-left mb-8 gap-4">
       <div>
         <router-link to="/" class="inline-flex items-center text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 mb-2 transition-colors">
             <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -86,10 +86,29 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { mediaService } from './services/mediaService';
+import { downloadStore } from './services/downloadStore';
 import { authMiddleware } from './middleware/authMiddleware';
 
 // Configure Multer
 const upload = multer({ dest: path.join(__dirname, '../uploads/') });
+
+// --- Staged Download Endpoint (PUBLIC) ---
+app.get('/api/download/:id', (req: Request, res: Response) => {
+  const { id } = req.params;
+  const file = downloadStore.get(id);
+
+  if (!file) {
+    return res.status(404).send('Download link expired or invalid.');
+  }
+
+  res.download(file.filePath, file.originalName, (err) => {
+    // Optional: Delete immediately after download? 
+    // For now, let the store cleanup handle it so retries work.
+    if (err) {
+      console.error('Error sending file:', err);
+    }
+  });
+});
 
 // Apply Security to all utility routes
 app.use('/api/utilities', authMiddleware);
@@ -102,13 +121,25 @@ app.post('/api/utilities/compress-video', upload.single('file'), async (req: Req
 
   try {
     const outputPath = await mediaService.compressVideo(req.file.path, quality, format);
-    res.download(outputPath, (err) => {
-      mediaService.cleanup(req.file!.path); // Clean upload
-      mediaService.cleanup(outputPath);     // Clean output
+
+    // Clean the input file immediately
+    mediaService.cleanup(req.file.path);
+
+    // Stage the output file
+    const originalName = req.file.originalname;
+    const nameWithoutExt = originalName.substring(0, originalName.lastIndexOf('.')) || originalName;
+    const downloadName = `compressed_${nameWithoutExt}.${format}`;
+
+    const downloadId = downloadStore.register(outputPath, downloadName);
+
+    res.json({
+      success: true,
+      downloadUrl: `/api/download/${downloadId}`
     });
+
   } catch (error) {
     console.error('Compression error:', error);
-    mediaService.cleanup(req.file!.path);   // Clean upload on error
+    mediaService.cleanup(req.file!.path);
     res.status(500).json({ error: 'Compression failed' });
   }
 });
@@ -120,9 +151,15 @@ app.post('/api/utilities/download-video', async (req: Request, res: Response) =>
 
   try {
     const result = await mediaService.downloadVideo(url);
-    res.download(result.path, `${result.title}.mp4`, (err) => {
-      mediaService.cleanup(result.path); // Clean output
+
+    // Stage the file
+    const downloadId = downloadStore.register(result.path, `${result.title}.mp4`);
+
+    res.json({
+      success: true,
+      downloadUrl: `/api/download/${downloadId}`
     });
+
   } catch (error) {
     console.error('Download error:', error);
     res.status(500).json({ error: 'Download failed' });
@@ -136,13 +173,23 @@ app.post('/api/utilities/convert-image', upload.single('file'), async (req: Requ
 
   try {
     const outputPath = await mediaService.convertImage(req.file.path, format);
-    res.download(outputPath, (err) => {
-      mediaService.cleanup(req.file!.path);
-      mediaService.cleanup(outputPath);     // Clean output
+
+    mediaService.cleanup(req.file.path);
+
+    const originalName = req.file.originalname;
+    const nameWithoutExt = originalName.substring(0, originalName.lastIndexOf('.')) || originalName;
+    const downloadName = `${nameWithoutExt}.${format}`;
+
+    const downloadId = downloadStore.register(outputPath, downloadName);
+
+    res.json({
+      success: true,
+      downloadUrl: `/api/download/${downloadId}`
     });
+
   } catch (error) {
     console.error('Conversion error:', error);
-    mediaService.cleanup(req.file!.path);   // Clean upload on error
+    mediaService.cleanup(req.file!.path);
     res.status(500).json({ error: 'Conversion failed' });
   }
 });
@@ -154,13 +201,24 @@ app.post('/api/utilities/pdf-to-docx', upload.single('file'), async (req: Reques
 
   try {
     const outputPath = await mediaService.convertPdf(req.file.path, format);
-    res.download(outputPath, (err) => {
-      mediaService.cleanup(req.file!.path);
-      mediaService.cleanup(outputPath);     // Clean output
+
+    mediaService.cleanup(req.file.path);
+
+    const originalName = req.file.originalname;
+    const nameWithoutExt = originalName.substring(0, originalName.lastIndexOf('.')) || originalName;
+    const ext = format === 'docx' ? 'docx' : 'md';
+    const downloadName = `converted_${nameWithoutExt}.${ext}`;
+
+    const downloadId = downloadStore.register(outputPath, downloadName);
+
+    res.json({
+      success: true,
+      downloadUrl: `/api/download/${downloadId}`
     });
+
   } catch (error: any) {
     console.error('PDF Conversion error:', error);
-    mediaService.cleanup(req.file!.path);   // Clean upload on error
+    mediaService.cleanup(req.file!.path);
     res.status(500).json({ error: 'Conversion failed' });
   }
 });

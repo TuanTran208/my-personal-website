@@ -55,17 +55,36 @@
        <input type="file" ref="fileInput" class="hidden" accept=".pdf" @change="handleFileSelect" />
     </div>
         
-        <button 
-            @click="convertPdf"
-            :disabled="!file || isConverting"
-            class="w-full bg-gradient-to-r from-orange-400 to-pink-500 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-        >
-            <svg v-if="isConverting" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            {{ isConverting ? 'Converting...' : 'Start Conversion' }}
-        </button>
+        <div v-if="!downloadUrl">
+            <button 
+                @click="convertPdf"
+                :disabled="!file || isConverting"
+                class="w-full bg-gradient-to-r from-orange-400 to-pink-500 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+                <svg v-if="isConverting" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {{ isConverting ? 'Converting...' : 'Start Conversion' }}
+            </button>
+        </div>
+
+        <div v-else class="flex gap-2">
+            <a 
+               :href="downloadUrl"
+               :download="downloadName"
+               class="flex-1 bg-green-600 hover:bg-green-700 text-center text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 no-underline"
+            >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                Download Document
+            </a>
+            <button 
+               @click="file = null; downloadUrl = null"
+               class="px-4 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-semibold rounded-lg transition-colors"
+            >
+               Reset
+            </button>
+        </div>
     </div>
   </div>
 </template>
@@ -95,52 +114,56 @@ onMounted(() => {
     accessKey.value = localStorage.getItem('pandory_access_key') || '';
 });
 
-const convertPdf = async () => {
-    if (!file.value) return;
-    if (!accessKey.value) {
-        error.value = 'Please enter Access Key in Dashboard Settings';
-        return;
-    }
-    
-    isConverting.value = true;
-    error.value = '';
+    const downloadUrl = ref<string | null>(null);
+    const downloadName = ref('');
 
-    const formData = new FormData();
-    formData.append('file', file.value);
-    formData.append('format', format.value);
-
-    try {
-        const response = await fetch('/api/utilities/pdf-to-docx', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'x-access-key': accessKey.value
-            }
-        });
-        
-        if (response.status === 401) throw new Error('Unauthorized. Please set Access Key in Settings.');
-        if (response.ok) {
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            
-            const ext = format.value === 'docx' ? 'docx' : 'md';
-            a.download = `converted_${file.value.name.replace('.pdf', '')}.${ext}`;
-            
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            
-            file.value = null;
-        } else {
-            throw new Error('Conversion failed');
+    const convertPdf = async () => {
+        if (!file.value) return;
+        if (!accessKey.value) {
+            error.value = 'Please enter Access Key in Dashboard Settings';
+            return;
         }
+        
+        isConverting.value = true;
+        error.value = '';
+        downloadUrl.value = null;
 
-    } catch (err: any) {
-        error.value = err.message;
-    } finally {
-        isConverting.value = false;
-    }
-};
+        const formData = new FormData();
+        formData.append('file', file.value);
+        formData.append('format', format.value);
+
+        try {
+            const response = await fetch('/api/utilities/pdf-to-docx', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'x-access-key': accessKey.value
+                }
+            });
+            
+            if (response.status === 401) throw new Error('Unauthorized. Please set Access Key in Settings.');
+            if (response.ok) {
+                const result = await response.json();
+                if (result.downloadUrl) {
+                    downloadUrl.value = result.downloadUrl;
+                    
+                    const ext = format.value === 'docx' ? 'docx' : 'md';
+                    downloadName.value = `converted_${file.value.name.replace('.pdf', '')}.${ext}`;
+                } else {
+                    throw new Error('No download URL returned');
+                }
+                
+            } else {
+                throw new Error('Conversion failed');
+            }
+
+        } catch (err: any) {
+            error.value = err.message;
+        } finally {
+            isConverting.value = false;
+        }
+    };
+
+
+
 </script>

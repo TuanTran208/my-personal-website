@@ -34,16 +34,35 @@
                  <option>WEBP</option>
              </select>
 
-             <button 
-                @click="convert"
-                :disabled="isConverting"
-                class="w-full py-2 bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white rounded-md text-sm font-semibold shadow-sm transition-colors flex items-center justify-center gap-2">
-                <svg v-if="isConverting" class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                {{ isConverting ? 'Converting...' : 'Convert' }}
-             </button>
+             <div v-if="!downloadUrl">
+                <button 
+                    @click="convert"
+                    :disabled="isConverting"
+                    class="w-full py-2 bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white rounded-md text-sm font-semibold shadow-sm transition-colors flex items-center justify-center gap-2">
+                    <svg v-if="isConverting" class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    {{ isConverting ? 'Converting...' : 'Convert' }}
+                </button>
+             </div>
+             
+             <div v-else class="flex gap-2">
+                 <a 
+                    :href="downloadUrl"
+                    :download="downloadName"
+                    class="flex-1 py-2 bg-blue-600 hover:bg-blue-700 text-center text-white rounded-md text-sm font-semibold shadow-sm transition-colors flex items-center justify-center gap-2 no-underline"
+                 >
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                    Download
+                 </a>
+                 <button 
+                   @click="file = null; downloadUrl = null"
+                   class="px-3 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-md text-sm font-semibold transition-colors"
+                >
+                   Reset
+                </button>
+             </div>
         </div>
     </div>
   </div>
@@ -57,15 +76,22 @@ const fileInput = ref(null);
 const format = ref('PNG');
 const isConverting = ref(false);
 
+const downloadUrl = ref(null);
+const downloadName = ref('');
+
 const triggerUpload = () => fileInput.value.click();
 
 const handleFileSelect = (e) => {
-    if (e.target.files.length > 0) file.value = e.target.files[0];
+    if (e.target.files.length > 0) {
+        file.value = e.target.files[0];
+        downloadUrl.value = null; // Reset on new file
+    }
 };
 
 const convert = async () => {
     if (!file.value) return;
     isConverting.value = true;
+    downloadUrl.value = null;
 
     const formData = new FormData();
     formData.append('file', file.value);
@@ -85,23 +111,22 @@ const convert = async () => {
         if (response.status === 401) throw new Error('Unauthorized. Please set Access Key in Settings.');
         if (!response.ok) throw new Error('Conversion failed');
 
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        const namePart = file.value.name.substring(0, file.value.name.lastIndexOf('.')) || file.value.name;
-        a.download = `${namePart}.${format.value.toLowerCase()}`;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
+        const result = await response.json();
+        if (result.downloadUrl) {
+             downloadUrl.value = result.downloadUrl;
+             const namePart = file.value.name.substring(0, file.value.name.lastIndexOf('.')) || file.value.name;
+             downloadName.value = `${namePart}.${format.value.toLowerCase()}`;
+        } else {
+            throw new Error('No download URL returned');
+        }
         
-        file.value = null;
-        alert('Conversion Successful!');
-
     } catch (error) {
         alert('Error converting image: ' + error.message);
     } finally {
         isConverting.value = false;
     }
 };
+
+
+
 </script>

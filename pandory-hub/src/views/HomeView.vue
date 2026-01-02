@@ -19,7 +19,6 @@
                 </p>
             </div>
             
-            <!-- Category Tabs moved here for better layout -->
             <div class="flex-shrink-0">
                  <CategoryTabs :categories="categories" :active-category="activeCategory" @update:active-category="activeCategory = $event" />
             </div>

@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express';
 import { getSystemHealth } from '../services/healthService';
 
 const router = express.Router();
-console.log('Health router initialized');
 
 router.get('/', async (req: Request, res: Response) => {
     try {

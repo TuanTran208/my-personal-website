@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { startScheduler } from './scheduler';
 import { getHistory } from './services/vnindexService';
 import { sendDiscordAlert } from './services/alertService';
+import healthRoutes from './routes/health';
 
 // Load environment variables
 dotenv.config();
@@ -16,6 +17,8 @@ app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Middleware to parse JSON bodies
 
 // --- API Routes ---
+console.log('Registering /api/health route');
+app.use('/api/health', healthRoutes);
 
 // The route to track a stock symbol
 app.get('/api/stock/:symbol', async (req: Request, res: Response) => {

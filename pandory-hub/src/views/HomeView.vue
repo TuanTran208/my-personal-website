@@ -60,6 +60,7 @@ import AiAgentCard from '../components/tools/AiAgent/AiAgentCard.vue';
 import UtilitiesCard from '../components/tools/Utilities/UtilitiesCard.vue';
 import CourseManagerCard from '../components/tools/CourseManager/CourseManagerCard.vue';
 import HomeAssistantCard from '../components/tools/HomeAssistant/HomeAssistantCard.vue';
+import SystemHealthCard from '../components/tools/SystemHealth/SystemHealthCard.vue';
 
 // Async Components (Lazy Loading) - NO, Static now for debugging
 const toolComponents = {
@@ -70,6 +71,7 @@ const toolComponents = {
   'utilities-card': UtilitiesCard,
   'course-manager-card': CourseManagerCard,
   'home-assistant-card': HomeAssistantCard,
+  'system-health-card': SystemHealthCard,
 };
 
 const tools = ref([
@@ -77,6 +79,7 @@ const tools = ref([
   { id: 'nas-server', title: 'NAS Server', description: 'Manage and access network storage.', category: 'Content & Media', icon: '🗄️', component: toolComponents['nas-card'] },
   { id: 'chat-ai', title: 'Chat to AI', description: 'Engage with an advanced AI.', category: 'AI & Productivity', icon: '🤖', component: toolComponents['chat-ai-card'] },
   { id: 'ai-agent', title: 'AI Agent', description: 'Automate tasks with a personal agent.', category: 'AI & Productivity', icon: '🧠', component: toolComponents['ai-agent-card'] },
+  { id: 'system-health', title: 'System Health', description: 'Monitor server resources.', category: 'Utilities', icon: '🩺', component: toolComponents['system-health-card'] },
   { id: 'utilities', title: 'Utilities', description: 'A collection of useful daily tools.', category: 'Utilities', icon: '⚙️', component: toolComponents['utilities-card'] },
   { id: 'course-manager', title: 'Course Manager', description: 'Organize my course materials.', category: 'Content & Media', icon: '📚', component: toolComponents['course-manager-card'] },
   { id: 'home-assistant', title: 'Home Assistant', description: 'Control my smart home devices.', category: 'Smart Home', icon: '🏠', component: toolComponents['home-assistant-card'] },

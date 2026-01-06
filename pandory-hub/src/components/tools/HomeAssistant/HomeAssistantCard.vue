@@ -31,6 +31,6 @@ defineProps({
 defineEmits(['toggleFavorite']);
 
 const openHomeAssistant = () => {
-    window.open('http://home.pandory.duckdns.org', '_blank');
+    window.open('http://home.pandory.me', '_blank');
 };
 </script>

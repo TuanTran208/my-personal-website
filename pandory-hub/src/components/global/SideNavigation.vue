@@ -99,7 +99,7 @@
         </a>
 
         <!-- NasServer -->
-        <a href="http://nas.pandory.me" target="_blank"
+        <a href="http://cloud.pandory.me" target="_blank"
             class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors whitespace-nowrap group relative"
         >
             <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -234,7 +234,7 @@
             <span>Home Assistant</span>
         </a>
 
-        <a href="http://nas.pandory.me" target="_blank"
+        <a href="http://cloud.pandory.me" target="_blank"
             class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
         >
              <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">

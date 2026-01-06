@@ -28,6 +28,6 @@ defineProps({
 defineEmits(['toggleFavorite']);
 
 const openNas = () => {
-    window.open('http://nas.pandory.duckdns.org', '_blank');
+    window.open('http://cloud.pandory.me', '_blank');
 };
 </script>

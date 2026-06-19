@@ -142,6 +142,7 @@
             </div>
         </button>
         
+
         <!-- About Me Button -->
         <button 
             @click="showAboutModal = true"
@@ -243,7 +244,7 @@
             <span>NAS Server</span>
         </a>
 
-        <div class="border-t border-gray-100 dark:border-gray-700 my-2"></div>
+
 
         <!-- Dark Mode Toggle Mobile -->
         <button 

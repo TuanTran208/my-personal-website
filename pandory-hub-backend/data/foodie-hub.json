@@ -1,0 +1,1027 @@
+{
+  "categories": [
+    {
+      "id": "cat-1",
+      "name": "Chicken",
+      "icon": "Flame"
+    },
+    {
+      "id": "cat-2",
+      "name": "Vietnamese",
+      "icon": "Soup"
+    },
+    {
+      "id": "cat-3",
+      "name": "Fast Food",
+      "icon": "Beef"
+    },
+    {
+      "id": "cat-4",
+      "name": "Sushi",
+      "icon": "Fish"
+    },
+    {
+      "id": "cat-5",
+      "name": "Italian",
+      "icon": "Pizza"
+    },
+    {
+      "id": "cat-6",
+      "name": "Coffee & Drinks",
+      "icon": "CupSoda"
+    },
+    {
+      "id": "cat-7",
+      "name": "Snack & Dessert",
+      "icon": "Cookie"
+    },
+    {
+      "id": "cat-8",
+      "name": "Vegan",
+      "icon": "Leaf"
+    },
+    {
+      "id": "cat-9",
+      "name": "Seafood & Snail",
+      "icon": "Shell"
+    }
+  ],
+  "restaurants": [
+    {
+      "id": "rest-1",
+      "name": "Crispy Gold Chicken",
+      "categoryId": "cat-1",
+      "rating": 4.8,
+      "avgPrice": 120000,
+      "address": "123 Food Street, District 1",
+      "signatureDishes": [
+        "Fried Chicken Legs",
+        "Honey Garlic Wings"
+      ],
+      "notes": "Best crunchy chicken in town. Highly recommend the garlic wings."
+    },
+    {
+      "id": "rest-2",
+      "name": "Pho Traditional",
+      "categoryId": "cat-2",
+      "rating": 4.9,
+      "avgPrice": 75000,
+      "address": "456 Heritage Road, District 3",
+      "signatureDishes": [
+        "Pho Rare Beef",
+        "Pho Chicken"
+      ],
+      "notes": "Super rich broth. Open early in the morning."
+    },
+    {
+      "id": "rest-3",
+      "name": "Gourmet Pizza Hub",
+      "categoryId": "cat-5",
+      "rating": 4.5,
+      "avgPrice": 250000,
+      "address": "789 Oven Boulevard, District 7",
+      "signatureDishes": [
+        "Pepperoni Deluxe",
+        "BBQ Chicken Pizza"
+      ],
+      "notes": "Woodfired pizzas. Great cheese pull."
+    },
+    {
+      "id": "rest-csv-1781783738295-746",
+      "name": "Cơm tấm Sao Mai",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-797",
+      "name": "Tú 330",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-854",
+      "name": "Cơm gà Tư Kiều",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-460",
+      "name": "Bánh cuốn Dĩnh Râu",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-374",
+      "name": "Cơm chay Diệu Vy - Lê Quang Định",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 40000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-212",
+      "name": "Chicken Plus",
+      "categoryId": "cat-1",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-472",
+      "name": "Bún mọc Tuấn Uyên",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "139 Nguyễn Súy, P. Tân Quý , Quận Tân Phú",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-116",
+      "name": "Bánh canh cua Trần Khắc Chân",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "87 Đ. Trần Khắc Chân, Phường Tân Định, Quận 1",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-769",
+      "name": "Mì trộn Tên Lửa",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-519",
+      "name": "Pizza 777",
+      "categoryId": "cat-5",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-8",
+      "name": "Mì quảng trộn A.Út",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 160000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-527",
+      "name": "Sủi cảo Thiên Ý",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 160000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-534",
+      "name": "Cơm Tấm Khương",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-698",
+      "name": "Xôi Bình Tiên",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-954",
+      "name": "Cơm tấm Huyền, Ba Ghiền",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-185",
+      "name": "Ô Bún Chả",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "154 Cộng Hoà",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-298",
+      "name": "Cơm gà Tường Vy",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-47",
+      "name": "A Tèo",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-398",
+      "name": "Kai",
+      "categoryId": "cat-6",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Nguyễn Thái Bình",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-994",
+      "name": "24h",
+      "categoryId": "cat-6",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-354",
+      "name": "Doris",
+      "categoryId": "cat-6",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-548",
+      "name": "…Ka",
+      "categoryId": "cat-6",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-798",
+      "name": "Hủ tiếu Hồng Hà",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-870",
+      "name": "Bột chiên",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Nguyễn Chí Thanh ( của Thành)",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-984",
+      "name": "Hủ tiếu xào Minh Phụng",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "( của Thành)",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-108",
+      "name": "Sủi cảo a.Quý",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "( Trần Quang Khải )",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-310",
+      "name": "Hủ tiếu chay Q11",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 40000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-381",
+      "name": "Phở Hữu",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-116",
+      "name": "Bún bò anh Hùng",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-559",
+      "name": "Bò né Phô mai",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "(Đồng nai)",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-574",
+      "name": "Tân Ký Mì Gia",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "( gần nhà)",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-214",
+      "name": "Sushi SUNHI",
+      "categoryId": "cat-4",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "( của Hậu)",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-161",
+      "name": "Hủ tiếu Nam vang",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "( Cao thắng )",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-384",
+      "name": "Bạch tuột Cầu Kiệu",
+      "categoryId": "cat-4",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-242",
+      "name": "Hủ tiếu Mực nguyễn Sơn",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-923",
+      "name": "Ăn vặt chú Mạnh",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-759",
+      "name": "Chè Xóm đất",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-140",
+      "name": "Tàu hủ đá Ngô Quyền",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-147",
+      "name": "Chè",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "trong hẻm và 64 Hậu Giang",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-809",
+      "name": "Chè Như Ý",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Nguyễn Đình Chiểu",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-817",
+      "name": "Bánh cam a.Khoa",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Gần Kí túc xá ĐH.Bk",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-473",
+      "name": "Prem Bistro",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 300000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-152",
+      "name": "Cơm Niêu Sài Gòn",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 300000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-20",
+      "name": "Hao Yu",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 300000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-155",
+      "name": "Pizza 4P’s",
+      "categoryId": "cat-5",
+      "rating": 4.5,
+      "avgPrice": 300000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-87",
+      "name": "Mushroom Hot Pot Tú Xương",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 300000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-609",
+      "name": "Bánh mì 24h",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-596",
+      "name": "Ốc Như",
+      "categoryId": "cat-9",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-421",
+      "name": "Ốc gần nhà chị Bình",
+      "categoryId": "cat-9",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-221",
+      "name": "Simple Cafe",
+      "categoryId": "cat-6",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-898",
+      "name": "Hủ tiếu Sườn Sụn Liên",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-418",
+      "name": "Cơm chiên Gò Dầu",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-705",
+      "name": "Cơm trộn 2 cô Lê Văn Sỹ",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-178",
+      "name": "Spaghetti",
+      "categoryId": "cat-5",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-353",
+      "name": "Ẩm thực chay 68",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "K52 Hoàng Diệu, Bến Vân Đồn , Q4",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-187",
+      "name": "Padme quán chay",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 300000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-954",
+      "name": "Takoyaki Seto",
+      "categoryId": "cat-4",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-35",
+      "name": "Nhà hàng chay Mộc Nhiên",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Trường Sa Quận 3",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-313",
+      "name": "Nấm Vegetarian Bistro",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Đinh Công Tráng Quận 1",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-15",
+      "name": "Mad Roosta",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 300000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-829",
+      "name": "Marcel Gourmet Burger",
+      "categoryId": "cat-3",
+      "rating": 4.5,
+      "avgPrice": 300000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [
+        "Burger blue cheese"
+      ],
+      "notes": "Visited spot. Note: Burger blue cheese",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-308",
+      "name": "Cơm chay Tha La",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 90000,
+      "address": "51 Trần Quốc Toản, Phường 8, Quận 3",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-618",
+      "name": "Cà-rem",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "191 Đ. Cách Mạng Tháng 8, Phường 4, Quận 3",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-944",
+      "name": "Texas, KFC, Lotteria, Jollybey",
+      "categoryId": "cat-3",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-472",
+      "name": "Ẩm Thực Phan Rang",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "https://www.foody.vn/ho-chi-minh/a-m-thu-c-phan-rang-ba-nh-can-ba-nh-xe-o-he-m-972-truo-ng-sa.19ug71/nearBy https://www.foody.vn/ho-chi-minh/khu-vuc-quan-3, TP. HCM",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-133",
+      "name": ",,No",
+      "categoryId": "cat-2",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-977",
+      "name": "Mumy chicken wraps",
+      "categoryId": "cat-1",
+      "rating": 4.5,
+      "avgPrice": 90000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-6",
+      "name": "buffet chay D’gemma",
+      "categoryId": "cat-8",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-csv-1781783738295-435",
+      "name": "Bánh dừa Tản Đà",
+      "categoryId": "cat-7",
+      "rating": 4.5,
+      "avgPrice": 60000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Visited spot.",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-620",
+      "name": "Nhà Hàng Gia Phú Phúc Kiến",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-418",
+      "name": "Phở Lệ",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-181",
+      "name": "Bún bò viên cô Hoa Vườn Chuối",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-181",
+      "name": "Bánh mì Sáu Minh",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-318",
+      "name": "Bánh Mì Cụ Lý",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-928",
+      "name": "Xôi /  Chè Bùi Thị Xuân",
+      "categoryId": "cat-7",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-487",
+      "name": "Gà nướng Bùi Thị Xuân",
+      "categoryId": "cat-1",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-906",
+      "name": "Kem Dừa CMT8",
+      "categoryId": "cat-7",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-819",
+      "name": "Kem Bơ gần BigC",
+      "categoryId": "cat-7",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet). Details: c.Bình",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-892",
+      "name": "Hủ tiếu Mỹ Tho Thanh Xuân",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-728",
+      "name": "homemi.sgn",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-696",
+      "name": "Hoàng Ty Võ Văn Tần",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet). Details:  Ngon, không ngon chửi a.Khoa",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-88",
+      "name": "Poke Saigon",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet). Details:  Salad ",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-729",
+      "name": "Hotpot story",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-489",
+      "name": "Trăng non rooftop",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet).",
+      "isUnavailable": false
+    },
+    {
+      "id": "rest-suggest-1781783738296-91",
+      "name": "Chạng vạng rooftop  Q2",
+      "categoryId": "cat-2",
+      "rating": 3,
+      "avgPrice": 80000,
+      "address": "Ho Chi Minh City",
+      "signatureDishes": [],
+      "notes": "Suggested spot (Not tried yet). Details:  L2",
+      "isUnavailable": false
+    }
+  ]
+}

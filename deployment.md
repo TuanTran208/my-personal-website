@@ -97,3 +97,56 @@ npm start
 ## Accessing the App
 
 Open your browser and navigate to `http://your-server-ip:3000`. You should see the Pandory Hub frontend, and all API calls will be handled by the same server.
+
+---
+
+## 🔄 Upgrading the Application (e.g. on Proxmox LXC/VM)
+
+When you make changes locally and push them to your Git repository, follow these steps to upgrade your live application on your Proxmox server:
+
+### 1. Pull the Latest Code
+SSH into your Proxmox container/VM, navigate to the project directory, and pull the updates:
+```bash
+cd /var/www/pandory-hub
+git pull origin main
+```
+
+### 2. Run the Build Pipeline
+You can run the automatic builder script to compile the frontend, copy it to the backend `public` directory, and compile the backend TypeScript source:
+```bash
+# Make sure the script is executable
+chmod +x deploy.sh
+
+# Run the build (we intercept it before it runs 'npm start' in the foreground)
+./deploy.sh
+```
+*Note: If `./deploy.sh` attempts to start the server in the foreground, you can terminate it with `Ctrl+C` once the build says `✅ Backend built successfully.`*
+
+Alternatively, you can run the manual build steps:
+```bash
+# Build Frontend
+cd pandory-hub
+npm install
+npm run build
+
+# Copy Assets to Backend public folder
+cd ../pandory-hub-backend
+mkdir -p public
+rm -rf public/*
+cp -r ../pandory-hub/dist/* public/
+
+# Build Backend
+npm install
+npm run build
+```
+
+### 3. Restart the Process Manager
+Since the backend code has changed, you must reload the node process in PM2:
+```bash
+pm2 restart "pandory-hub"
+```
+Verify the server is running correctly:
+```bash
+pm2 status
+pm2 logs "pandory-hub"
+```

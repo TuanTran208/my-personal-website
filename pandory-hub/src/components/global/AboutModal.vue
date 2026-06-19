@@ -188,7 +188,7 @@
             <div class="flex flex-col md:flex-row items-center gap-12 pt-8 border-t border-gray-100 dark:border-gray-800">
                 <!-- Profile Avatar -->
                 <div class="relative w-40 h-40 md:w-56 md:h-56 flex-shrink-0">
-                    <img class="rounded-full w-full h-full object-cover shadow-2xl border-4 border-white dark:border-gray-800" src="https://avatars.githubusercontent.com/u/10101?v=4" alt="Tuan Tran Profile" />
+                    <img class="rounded-full w-full h-full object-cover shadow-2xl border-4 border-white dark:border-gray-800" src="https://github.com/TuanTran208.png" alt="Tuan Tran Profile" />
                 </div>
 
                 <!-- Contact Details -->

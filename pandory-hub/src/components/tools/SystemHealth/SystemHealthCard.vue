@@ -68,7 +68,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import UiCard from '../../ui/UiCard.vue';
 
 defineProps({
@@ -115,9 +115,14 @@ const fetchData = async () => {
   }
 };
 
+let intervalId;
+
 onMounted(() => {
   fetchData();
-  // Refresh every 10 seconds if visible? For now just manual refresh or on mount.
-  setInterval(fetchData, 30000); // 30s auto refresh
+  intervalId = setInterval(fetchData, 30000); // 30s auto refresh
+});
+
+onUnmounted(() => {
+  if (intervalId) clearInterval(intervalId);
 });
 </script>

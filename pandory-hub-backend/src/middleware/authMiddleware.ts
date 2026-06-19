@@ -1,17 +1,25 @@
-
 import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
 
-const ACCESS_KEY = process.env.API_ACCESS_KEY || 'pandory_secret'; // Default for dev if not set
+const JWT_SECRET = process.env.JWT_SECRET || 'pandory_fallback_secret';
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
-    // Allow if no key is configured (optional, but unsafe for production)
-    // But here we enforce it.
+    const authHeader = req.headers['authorization'];
 
-    const clientKey = req.headers['x-access-key'];
-
-    if (!clientKey || clientKey !== ACCESS_KEY) {
-        return res.status(401).json({ error: 'Unauthorized: Invalid Access Key' });
+    // 1. Check Bearer Token if provided
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+        const token = authHeader.split(' ')[1];
+        try {
+            const decoded = jwt.verify(token, JWT_SECRET);
+            (req as any).user = decoded; // Attach for downstream routes if needed
+        } catch (error) {
+            // Invalid or expired token (log it but don't block, treat as guest)
+            console.warn('Invalid token provided in request headers');
+        }
     }
 
+    // 2. Allow request to proceed. 
+    // All routes are open by default. Downstream routes that require protection 
+    // must explicitly check `req.user?.isOwner` internally.
     next();
 };

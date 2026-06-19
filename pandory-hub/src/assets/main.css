@@ -6,9 +6,8 @@
 /* GLOBAL RESETS */
 body {
     font-family: 'Inter', sans-serif;
-    /* Added bg-gray-900 so the whole page is dark like your screenshot */
-    /* Added min-h-screen so it fills the height even if content is short */
-    @apply bg-gray-900 text-white min-h-screen;
+    /* Support both light and dark mode backgrounds naturally */
+    @apply bg-white dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen;
     transition: background-color 0.3s ease, color 0.3s ease;
     margin: 0;
 }

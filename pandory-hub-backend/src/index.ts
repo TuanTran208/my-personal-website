@@ -1,13 +1,15 @@
+import dotenv from 'dotenv';
+// Load environment variables immediately
+dotenv.config();
+
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import { startScheduler } from './scheduler';
 import { getHistory } from './services/vnindexService';
 import { sendDiscordAlert } from './services/alertService';
 import healthRoutes from './routes/health';
-
-// Load environment variables
-dotenv.config();
+import authRoutes from './routes/auth';
+import foodieHubRoutes from './routes/foodieHub';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -25,6 +27,8 @@ app.use((req, res, next) => {
 // --- API Routes ---
 console.log('Registering /api/health route');
 app.use('/api/health', healthRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/foodie-hub', foodieHubRoutes);
 app.get('/api/health-test', (req, res) => res.json({ status: 'ok' }));
 
 // The route to track a stock symbol

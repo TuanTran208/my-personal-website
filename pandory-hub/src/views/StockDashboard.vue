@@ -1,38 +1,44 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 font-inter">
     <!-- Header / Navigation -->
-    <header class="flex flex-col md:flex-row justify-between items-left mb-8 gap-4">
-      <div>
-        <router-link to="/" class="inline-flex items-center text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 mb-2 transition-colors">
-            <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Hub
-        </router-link>
+    <header class="flex flex-col md:flex-row justify-between items-start mb-8 gap-4">
+      <div class="w-full md:w-auto">
+        <div class="flex justify-between items-center mb-2">
+          <router-link to="/" class="inline-flex items-center text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+              <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to Hub
+          </router-link>
+          <AuthWidget class="md:hidden" />
+        </div>
         <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-1">
           <span class="text-blue-600 dark:text-blue-400">Graham</span> & Buffett Tracker
         </h1>
         <p class="text-sm text-gray-500 dark:text-gray-400">Rational Investing based on Fundamental Value</p>
       </div>
 
-      <!-- Search with Autocomplete -->
-      <div class="relative w-full md:w-96">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <svg v-if="!loading" class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-           <svg v-else class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      <!-- Search with Autocomplete & AuthWidget -->
+      <div class="flex flex-col md:flex-row items-end md:items-center gap-3 w-full md:w-auto">
+        <div class="relative w-full md:w-96">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg v-if="!loading" class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
+             <svg v-else class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+          </div>
+          <input 
+            v-model="searchQuery"
+            @keyup.enter="handleSearch"
+            type="text" 
+            class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg leading-5 bg-white dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-shadow dark:text-white" 
+            placeholder="Search Ticker (e.g. FPT, VNM)..." 
+          />
         </div>
-        <input 
-          v-model="searchQuery"
-          @keyup.enter="handleSearch"
-          type="text" 
-          class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg leading-5 bg-white dark:bg-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-shadow dark:text-white" 
-          placeholder="Search Ticker (e.g. FPT, VNM)..." 
-        />
+        <AuthWidget class="hidden md:flex" />
       </div>
     </header>
 
@@ -329,6 +335,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import MetricCard from '../components/dashboard/MetricCard.vue';
 import StockChart from '../components/dashboard/StockChart.vue';
+import AuthWidget from '../components/global/AuthWidget.vue';
 
 const route = useRoute();
 const searchQuery = ref('');

@@ -27,8 +27,8 @@ Pandory Hub is a self-hosted personal server dashboard application designed to m
 ## 📂 Project Structure
 
 ```
-my-personal-website/
-├── pandory-hub/                # Vue 3 Frontend App
+pandory-hub/
+├── frontend/                # Vue 3 Frontend App
 │   ├── src/
 │   │   ├── components/         # Reusable dashboard widgets & toolcards
 │   │   ├── composables/        # Shared state & hooks (e.g. useAuth)
@@ -36,7 +36,7 @@ my-personal-website/
 │   │   └── views/              # Page layouts (Home, FoodieHub, etc.)
 │   └── vite.config.js          # Vite config & API reverse proxy proxying to :3001
 │
-├── pandory-hub-backend/        # Express TypeScript API Backend
+├── backend/                 # Express TypeScript API Backend
 │   ├── src/
 │   │   ├── routes/             # REST endpoints (health, auth, foodie-hub)
 │   │   ├── services/           # Business logic & external tool wrappers
@@ -74,7 +74,7 @@ You will need two terminal windows open to run both services simultaneously.
     DISCORD_CLIENT_ID=your_client_id
     DISCORD_CLIENT_SECRET=your_client_secret
     DISCORD_REDIRECT_URI=http://localhost:3000/auth/discord/callback
-    OWNER_DISCORD_ID=your_discord_snowflake_id
+    DISCORD_OWNER_ID=your_discord_snowflake_id
     JWT_SECRET=your_jwt_signing_secret
     ```
 4.  Start development server (with nodemon):

@@ -43,6 +43,7 @@ export const fetchVNIndex = async (): Promise<VNIndexData | null> => {
             };
 
             saveData(vnIndexData);
+            checkAndAlert(vnIndexData);
             return vnIndexData;
         } else {
             console.warn('No data found for VNINDEX');
@@ -88,7 +89,9 @@ const saveData = (data: VNIndexData) => {
 }
 
 const checkAndAlert = (data: VNIndexData) => {
+    console.log('Checking alert for VNIndex...');
     const thresholdEnv = process.env.VNINDEX_ALERT_THRESHOLD;
+    console.log('Threshold Env:', thresholdEnv);
     if (!thresholdEnv) return;
 
     const threshold = parseFloat(thresholdEnv);

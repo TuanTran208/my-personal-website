@@ -13,7 +13,7 @@ We want to add Discord authentication to the Pandory Hub. Currently, the dashboa
 
 ## Risks / Trade-offs
 - **Risk**: Hardcoding the owner's Discord ID requires code changes if ownership changes. 
-  **Mitigation**: Put `OWNER_DISCORD_ID` in the backend `.env` file instead of compiling it into the source.
+  **Mitigation**: Put ` DISCORD_OWNER_ID` in the backend `.env` file instead of compiling it into the source.
 
 ## Migration Plan
 None required. Users without a JWT will fall back to "Guest" access by default.

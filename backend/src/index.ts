@@ -6,7 +6,6 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { startScheduler } from './scheduler';
 import { getHistory } from './services/vnindexService';
-import { sendDiscordAlert } from './services/alertService';
 import healthRoutes from './routes/health';
 import authRoutes from './routes/auth';
 import foodieHubRoutes from './routes/foodieHub';

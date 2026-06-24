@@ -1,3 +1,4 @@
+import { fetchBitcoin } from './services/cryptoService';
 import { fetchVNIndex } from './services/vnindexService';
 
 // const INTERVAL_MS = 60 * 60 * 1000; // 1 hour
@@ -53,6 +54,7 @@ const checkAndRun = async () => {
         console.log(`Scheduler: In Trading Hours (${hour}:${minute.toString().padStart(2, '0')}). Fetching...`);
         await fetchVNIndex();
     } else {
-        // console.log(`Scheduler: Skipping (Outside Trading Hours: ${hour}:${minute})`);
+        await fetchBitcoin();
+        console.log(`Scheduler: Skipping (Outside Trading Hours: ${hour}:${minute})`);
     }
 };

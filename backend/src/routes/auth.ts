@@ -7,7 +7,6 @@ const router = Router();
 router.get('/discord/url', (req: Request, res: Response) => {
     const clientId = process.env.DISCORD_CLIENT_ID;
     const redirectUri = process.env.DISCORD_REDIRECT_URI;
-    
     if (!clientId || !redirectUri) {
         return res.status(500).json({ error: 'OAuth not configured on backend.' });
     }
@@ -26,7 +25,7 @@ router.post('/discord/callback', async (req: Request, res: Response) => {
     try {
         const discordUser = await authService.handleDiscordLogin(code);
         const token = authService.generateToken(discordUser);
-        
+
         // Expose user basics required by the frontend
         res.json({
             success: true,
@@ -35,7 +34,7 @@ router.post('/discord/callback', async (req: Request, res: Response) => {
                 id: discordUser.id,
                 username: discordUser.username,
                 avatar: discordUser.avatar,
-                isOwner: discordUser.id === (process.env.OWNER_DISCORD_ID || '')
+                isOwner: discordUser.id === (process.env.DISCORD_OWNER_ID || '')
             }
         });
     } catch (error: any) {

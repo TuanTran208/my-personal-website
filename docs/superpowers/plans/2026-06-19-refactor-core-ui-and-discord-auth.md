@@ -34,7 +34,7 @@
   import { authService } from '../services/authService';
 
   // Mock process.env
-  process.env.OWNER_DISCORD_ID = ' 779261512308752394 '; // With spaces
+  process.env.DISCORD_OWNER_ID = ' 779261512308752394 '; // With spaces
 
   const mockUserStringId = { id: '779261512308752394', username: 'testuser', avatar: 'avatar_hash' };
   const mockUserNumberId = { id: 779261512308752394, username: 'testuser', avatar: 'avatar_hash' };
@@ -64,7 +64,7 @@
   Modify `generateToken` in `pandory-hub-backend/src/services/authService.ts`:
   ```typescript
   generateToken(discordUser: any) {
-      const ownerId = (process.env.OWNER_DISCORD_ID || '').trim();
+      const ownerId = (process.env.DISCORD_OWNER_ID || '').trim();
       const jwtSecret = process.env.JWT_SECRET || 'pandory_fallback_secret';
       const isOwner = ownerId !== '' && String(discordUser.id).trim() === ownerId;
       
@@ -89,7 +89,7 @@
       try {
           const discordUser = await authService.handleDiscordLogin(code);
           const token = authService.generateToken(discordUser);
-          const ownerId = (process.env.OWNER_DISCORD_ID || '').trim();
+          const ownerId = (process.env.DISCORD_OWNER_ID || '').trim();
           
           res.json({
               success: true,

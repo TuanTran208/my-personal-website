@@ -8,7 +8,7 @@ export const sendDiscordAlert = async (message: string, isUrgent: boolean = fals
     }
 
     // You can mention a user by ID if provided, e.g. <@123456789>
-    const userId = process.env.DISCORD_USER_ID;
+    const userId = process.env.DISCORD_OWNER_ID;
     const mention = userId ? `<@${userId}>` : '@everyone';
 
     const payload = {

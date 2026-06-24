@@ -64,10 +64,10 @@ class AuthService {
      * Issues a JWT containing user ID, username, avatar and owner status.
      */
     generateToken(discordUser: any) {
-        const ownerId = process.env.OWNER_DISCORD_ID || '';
+
+        const ownerId = process.env.DISCORD_OWNER_ID || '';
         const jwtSecret = process.env.JWT_SECRET || 'pandory_fallback_secret';
         const isOwner = ownerId !== '' && discordUser.id === ownerId;
-        
         const payload = {
             id: discordUser.id,
             username: discordUser.username,

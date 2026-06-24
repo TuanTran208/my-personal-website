@@ -14,7 +14,7 @@ The system SHALL allow users to authenticate using their Discord account via sta
 The system SHALL protect specific components, optionally granting or denying features based on an 'Owner' role.
 
 #### Scenario: Owner accessing protected tool
-- **WHEN** the authenticated user's Discord ID matches the configured `OWNER_DISCORD_ID` environment variable
+- **WHEN** the authenticated user's Discord ID matches the configured `DISCORD_OWNER_ID` environment variable
 - **THEN** they CAN seamlessly access the Stock Tracker, NAS Server, AI Agent, Home Assistant, and Course Management dashboards
 
 #### Scenario: Regular user accessing protected tool

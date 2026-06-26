@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 p-6">
     <!-- Header -->
-    <header class="max-w-7xl mx-auto mb-8">
+    <header class="mb-8">
       <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-4">
         <div class="w-full md:w-auto">
           <div class="flex justify-between items-center mb-2">
@@ -20,21 +20,12 @@
         </div>
 
         <div class="flex items-center gap-3 self-end md:self-auto">
-          <button 
-            @click="openAddModal" 
-            class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg py-2 px-4 shadow-sm transition-all flex items-center gap-2 text-sm"
-          >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-            Add Restaurant
-          </button>
           <AuthWidget class="hidden md:flex" />
         </div>
       </div>
     </header>
 
-    <main class="max-w-7xl mx-auto space-y-8">
+    <main class="space-y-8">
       <!-- Search & Suggestion Section -->
       <section class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
         <h2 class="text-lg font-bold text-gray-850 dark:text-white mb-4 flex items-center gap-2">
